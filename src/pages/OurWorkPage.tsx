@@ -1,6 +1,10 @@
 import Section from '../components/Section'
+import apservaLogo from '../assets/apserva_logo.png'
+import foodLoopLogo from '../assets/foodloop_logo.png'
 
 interface Project {
+  name: string
+  logo?: string
   problem: string
   solution: string
   outcome: string
@@ -8,19 +12,18 @@ interface Project {
 
 const projects: Project[] = [
   {
-    problem: "A founder had an idea for a SaaS product but no technical team. They needed someone to build, deploy, and maintain the application from start to finish.",
-    solution: "We built a full-stack application and set up production infrastructure. We configured CI/CD pipelines and handled the initial deployment. We continue to maintain and monitor the system.",
-    outcome: "The product launched to real users within months. The application runs reliably in production, and we handle ongoing maintenance and updates."
+    name: "Apserva",
+    logo: apservaLogo,
+    problem: "Software teams needed to understand real user behavior in legacy applications to guide modernization decisions, but lacked visibility into how their systems were actually being used.",
+    solution: "We architected and built a SaaS analytics platform from the ground up. The platform includes analytics pipelines that surface actionable insights, a scalable multi-tenant architecture supporting early pilots and long-term growth, and is deployed for rapid iteration. We handled the full development lifecycle from architecture to deployment.",
+    outcome: "The platform helps software teams make data-driven decisions about product modernization. The multi-tenant architecture supports both early pilots and scales for long-term growth, enabling teams to understand real user behavior and prioritize modernization efforts effectively."
   },
   {
-    problem: "A startup had a working prototype but needed it deployed to production with proper infrastructure. They didn't have DevOps expertise and needed ongoing support.",
-    solution: "We set up cloud infrastructure, configured automated deployments, and implemented monitoring. We also refactored critical parts for production reliability and continue to maintain the system.",
-    outcome: "The application runs reliably in production with automated deployments. The team focuses on building features while we handle infrastructure and maintenance."
-  },
-  {
-    problem: "A small team was building a new application but needed help with both development and infrastructure. They wanted one partner to handle everything.",
-    solution: "We built new features, set up production infrastructure, and configured deployment pipelines. We also handle ongoing maintenance, monitoring, and updates as the product grows.",
-    outcome: "The team has a reliable production system with automated deployments. We continue to maintain everything, allowing them to focus on product development."
+    name: "Food Loop",
+    logo: foodLoopLogo,
+    problem: "A startup was running on shared hosting that couldn't scale and lacked reliability. They needed to migrate to cloud infrastructure but didn't have the expertise to lead the transition or manage an engineering team through the migration.",
+    solution: "We led a complete cloud migration from shared hosting to AWS. We designed and implemented secure cloud architecture, worked directly with founders to understand requirements, and led an offshore engineering team through the entire transition process.",
+    outcome: "The migration significantly improved scalability and reliability. The application now runs on a secure, scalable cloud infrastructure that can grow with the business. The founders have a production-ready system without needing to hire a full DevOps team."
   }
 ]
 
@@ -44,7 +47,15 @@ const OurWorkPage = () => {
           {projects.map((project, index) => (
             <div key={index} className="bg-white p-8 md:p-12 rounded-lg shadow-sm">
               <div className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Project {index + 1}</h2>
+                <div className="flex justify-start mb-6">
+                  {project.logo && (
+                    <img 
+                      src={project.logo} 
+                      alt={`${project.name} logo`}
+                      className="h-32 md:h-40 w-auto object-contain"
+                    />
+                  )}
+                </div>
                 
                 <div className="space-y-6">
                   <div>
