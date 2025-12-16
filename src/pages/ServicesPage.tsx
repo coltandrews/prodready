@@ -9,8 +9,8 @@ const ServicesPage = () => {
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Services</h1>
           <p className="text-xl text-gray-600">
-            We build, deploy, and maintain new applications from start to finish. 
-            One partner for your entire product journey.
+            We help with building, deploying, or maintaining applications. 
+            Whether you need help at one stage or across the entire journey, we're here to help.
           </p>
         </div>
       </Section>
@@ -127,7 +127,7 @@ const ServicesPage = () => {
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
           <p className="text-xl text-gray-600 mb-8">
-            Let's discuss how we can help you turn your idea into production-ready software.
+            Whether you need help building, deploying, or maintaining, let's discuss how we can help.
           </p>
           <CTA href="/#contact">Start a Conversation</CTA>
         </div>

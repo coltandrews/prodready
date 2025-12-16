@@ -11,7 +11,8 @@ const LandingPage = () => {
             From idea to production-ready software.
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8">
-            We help founders and small teams build, deploy, and maintain new applications from start to finish.
+            We help founders and small teams build, deploy, and maintain applications. 
+            Whether you need help at any stage or the full journey, we're here to help.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <CTA href="/#contact">Talk to an Engineer</CTA>
@@ -25,8 +26,8 @@ const LandingPage = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What We Do</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            We build, deploy, and maintain new applications from start to finish. 
-            One partner for your entire product journey.
+            We help with building, deploying, or maintaining applications. Whether you need help 
+            at one stage or across the entire product journey, we're your partner.
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
@@ -63,22 +64,22 @@ const LandingPage = () => {
           <div className="text-center">
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Founders with Ideas</h3>
             <p className="text-gray-600">
-              You have an idea but need someone to build, deploy, and maintain it. 
-              We handle the technical work from start to finish.
+              You have an idea but need help building, deploying, or maintaining it. 
+              We can help at any stage or handle the full journey.
             </p>
           </div>
           <div className="text-center">
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Early-Stage Startups</h3>
             <p className="text-gray-600">
-              You're building a new product and need infrastructure and deployment handled correctly 
-              without hiring a full team.
+              You need help building, deploying, or maintaining your product. We can assist 
+              at any stage without requiring a full team.
             </p>
           </div>
           <div className="text-center">
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Small Teams</h3>
             <p className="text-gray-600">
-              Your team needs help building new features or setting up production infrastructure 
-              while you focus on product.
+              Your team needs help building, deploying, or maintaining systems. 
+              We can assist at any stage while you focus on product.
             </p>
           </div>
         </div>
@@ -94,7 +95,7 @@ const LandingPage = () => {
             <li className="flex items-start">
               <span className="text-gray-900 font-semibold mr-3">•</span>
               <span className="text-gray-700">
-                We handle everything: building, deploying, and maintaining your application
+                We help at any stage: building, deploying, or maintaining. Full journey or specific needs.
               </span>
             </li>
             <li className="flex items-start">
@@ -124,7 +125,8 @@ const LandingPage = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How We Work</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Simple process. One partner. From idea to production.
+            We help at any stage: building, deploying, or maintaining. 
+            One partner for whatever you need.
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">

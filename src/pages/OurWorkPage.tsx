@@ -35,8 +35,8 @@ const OurWorkPage = () => {
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Work</h1>
           <p className="text-xl text-gray-600">
-            Examples of how we've helped founders and small teams turn ideas into production-ready software — 
-            from first idea to real users.
+            Examples of how we've helped founders and small teams at different stages — 
+            building new products, deploying to production, or maintaining existing systems.
           </p>
         </div>
       </Section>
@@ -52,7 +52,7 @@ const OurWorkPage = () => {
                     <img 
                       src={project.logo} 
                       alt={`${project.name} logo`}
-                      className="h-32 md:h-40 w-auto object-contain"
+                      className="h-12 md:h-16 w-auto object-contain"
                     />
                   )}
                 </div>
@@ -83,12 +83,13 @@ const OurWorkPage = () => {
       <Section className="bg-white">
         <div className="text-center max-w-2xl mx-auto">
           <p className="text-gray-600 mb-4">
-            These case studies represent typical engagements. Each project is tailored to the specific 
-            needs and constraints of the client. We work as embedded partners, owning production environments 
-            and taking responsibility for reliability.
+            These case studies represent typical engagements. We help at any stage — building, 
+            deploying, or maintaining. Each project is tailored to the specific needs and constraints 
+            of the client. We work as embedded partners, owning production environments and taking 
+            responsibility for reliability.
           </p>
           <p className="text-gray-600">
-            Contact us to discuss how we can help turn your idea into production-ready software.
+            Contact us to discuss how we can help, whether you need assistance at one stage or across the full journey.
           </p>
         </div>
       </Section>

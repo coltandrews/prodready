@@ -8,8 +8,8 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">ProdReady LLC</h3>
             <p className="text-sm text-gray-600">
-              We build, deploy, and maintain new applications from start to finish. 
-              One partner for your entire product journey.
+              We help with building, deploying, or maintaining applications. 
+              Whether you need help at one stage or across the entire journey, we're here to help.
             </p>
           </div>
           
