@@ -37,7 +37,7 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold text-gray-900 mb-4">Contact</h4>
             <Link
-              to="/#contact"
+              to="/contact"
               className="inline-block px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-md hover:bg-gray-800 transition-colors"
             >
               Talk to an Engineer

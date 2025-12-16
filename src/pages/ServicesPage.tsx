@@ -129,7 +129,7 @@ const ServicesPage = () => {
           <p className="text-xl text-gray-600 mb-8">
             Whether you need help building, deploying, or maintaining, let's discuss how we can help.
           </p>
-          <CTA href="/#contact">Start a Conversation</CTA>
+          <CTA href="/contact">Start a Conversation</CTA>
         </div>
       </Section>
     </>
