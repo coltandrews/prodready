@@ -1,3 +1,6 @@
+import PRLongLogo from '../assets/PR_long_logo.png'
+import PRShortLogo from '../assets/PR_short_logo.png'
+
 const Navbar = () => {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -6,12 +9,23 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center min-h-[52px] md:min-h-[60px] py-2">
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-xl font-bold text-gray-900 hover:text-gray-700 transition-colors"
+            className="flex items-center hover:opacity-80 transition-opacity"
           >
-            ProdReady
+            {/* Long logo for desktop */}
+            <img 
+              src={PRLongLogo} 
+              alt="ProdReady" 
+              className="hidden md:block h-12 md:h-[60px] lg:h-[66px] w-auto object-contain"
+            />
+            {/* Short logo for mobile */}
+            <img 
+              src={PRShortLogo} 
+              alt="ProdReady" 
+              className="md:hidden h-[42px] w-auto object-contain"
+            />
           </button>
           
           <div className="hidden md:flex space-x-8">

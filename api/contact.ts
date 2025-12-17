@@ -1,15 +1,7 @@
 import { Resend } from 'resend'
 
 export default async function handler(req: any, res: any) {
-  // Initialize Resend inside the handler to ensure env vars are available
-  const apiKey = process.env.RESEND_API_KEY
-  if (!apiKey) {
-    console.error('RESEND_API_KEY is not set')
-    return res.status(500).json({ error: 'Email service not configured' })
-  }
-  
-  const resend = new Resend(apiKey)
-  // Handle CORS
+  // Handle CORS first
   res.setHeader('Access-Control-Allow-Credentials', 'true')
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
@@ -19,6 +11,18 @@ export default async function handler(req: any, res: any) {
     res.status(200).end()
     return
   }
+
+  // Initialize Resend inside the handler to ensure env vars are available
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    console.error('RESEND_API_KEY is not set in environment variables')
+    return res.status(500).json({ 
+      error: 'Email service not configured',
+      message: 'RESEND_API_KEY environment variable is missing. Please add it in Vercel project settings.'
+    })
+  }
+  
+  const resend = new Resend(apiKey)
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
@@ -31,8 +35,8 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: 'Missing required fields' })
     }
 
-    // Send email to your address
-    const { data, error } = await resend.emails.send({
+    // Send email to admin
+    const adminEmail = await resend.emails.send({
       from: 'ProdReady Contact <onboarding@resend.dev>',
       to: process.env.CONTACT_EMAIL || 'colt@prodready.co',
       subject: `New Contact Form Submission from ${name}`,
@@ -46,12 +50,31 @@ export default async function handler(req: any, res: any) {
       replyTo: email as string,
     })
 
-    if (error) {
-      console.error('Resend error:', error)
-      return res.status(500).json({ error: 'Failed to send email', details: error })
+    if (adminEmail.error) {
+      console.error('Resend error (admin email):', adminEmail.error)
+      return res.status(500).json({ error: 'Failed to send email', details: adminEmail.error })
     }
 
-    return res.status(200).json({ success: true, data })
+    // Send confirmation email to the submitter
+    const confirmationEmail = await resend.emails.send({
+      from: 'ProdReady <onboarding@resend.dev>',
+      to: email as string,
+      subject: 'Thank you for reaching out to ProdReady',
+      html: `
+        <h2>Thank you for reaching out!</h2>
+        <p>Hi ${name},</p>
+        <p>We've received your message and will get back to you soon.</p>
+        <p>In the meantime, if you have any urgent questions, feel free to reach out directly.</p>
+        <p>Best regards,<br>The ProdReady Team</p>
+      `,
+    })
+
+    if (confirmationEmail.error) {
+      console.error('Resend error (confirmation email):', confirmationEmail.error)
+      // Don't fail the request if confirmation email fails, admin email already sent
+    }
+
+    return res.status(200).json({ success: true, data: adminEmail.data })
   } catch (error) {
     console.error('Error:', error)
     return res.status(500).json({ 
