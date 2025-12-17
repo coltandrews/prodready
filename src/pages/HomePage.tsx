@@ -108,7 +108,7 @@ const HomePage = () => {
             onClick={scrollToContact}
             className="px-8 py-4 bg-gray-900 text-white text-base font-medium rounded-md hover:bg-gray-800 transition-colors"
           >
-            Get Started
+            Learn More
           </button>
         </div>
       </Section>
@@ -249,44 +249,6 @@ const HomePage = () => {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Why */}
-      <Section className="bg-gray-50">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Why ProdReady</h2>
-        </div>
-        <div className="max-w-3xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
-              <div className="text-lg font-semibold text-gray-900 mb-2">Any Stage</div>
-              <p className="text-gray-600 text-sm">
-                We help at any stage: building, deploying, or maintaining. 
-                Full journey or specific needs.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
-              <div className="text-lg font-semibold text-gray-900 mb-2">Production-Ready</div>
-              <p className="text-gray-600 text-sm">
-                Real software that ships and runs reliably. Production-ready from day one.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
-              <div className="text-lg font-semibold text-gray-900 mb-2">Direct Partnership</div>
-              <p className="text-gray-600 text-sm">
-                We work directly with founders and small teams, not through layers 
-                of project management.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
-              <div className="text-lg font-semibold text-gray-900 mb-2">Built to Scale</div>
-              <p className="text-gray-600 text-sm">
-                Technical decisions that work now and scale later. 
-                Architecture that grows with you.
-              </p>
             </div>
           </div>
         </div>
