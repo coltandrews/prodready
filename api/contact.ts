@@ -1,8 +1,14 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export default async function handler(req: any, res: any) {
+  // Initialize Resend inside the handler to ensure env vars are available
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    console.error('RESEND_API_KEY is not set')
+    return res.status(500).json({ error: 'Email service not configured' })
+  }
+  
+  const resend = new Resend(apiKey)
   // Handle CORS
   res.setHeader('Access-Control-Allow-Credentials', 'true')
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -23,12 +29,6 @@ export default async function handler(req: any, res: any) {
 
     if (!name || !email || !message) {
       return res.status(400).json({ error: 'Missing required fields' })
-    }
-
-    // Validate Resend API key
-    if (!process.env.RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is not set')
-      return res.status(500).json({ error: 'Email service not configured' })
     }
 
     // Send email to your address
