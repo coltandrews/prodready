@@ -37,7 +37,7 @@ export default async function handler(req: any, res: any) {
 
     // Send email to admin
     const adminEmail = await resend.emails.send({
-      from: 'ProdReady Contact <onboarding@resend.dev>',
+      from: 'ProdReady <colt@prodready.co>',
       to: process.env.CONTACT_EMAIL || 'colt@prodready.co',
       subject: `New Contact Form Submission from ${name}`,
       html: `
@@ -57,7 +57,7 @@ export default async function handler(req: any, res: any) {
 
     // Send confirmation email to the submitter
     const confirmationEmail = await resend.emails.send({
-      from: 'ProdReady <onboarding@resend.dev>',
+      from: 'ProdReady <colt@prodready.co>',
       to: email as string,
       subject: 'Thank you for reaching out to ProdReady',
       html: `
