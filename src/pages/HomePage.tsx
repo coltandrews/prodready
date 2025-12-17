@@ -1,20 +1,30 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Section from '../components/Section'
 import apservaLogo from '../assets/apserva_logo.png'
 import foodLoopLogo from '../assets/foodloop_logo.png'
 
 const HomePage = () => {
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [formMessage, setFormMessage] = useState('')
+  const [showToast, setShowToast] = useState(false)
+  const [toastMessage, setToastMessage] = useState('')
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => {
+        setShowToast(false)
+      }, 4000) // Hide after 4 seconds
+      return () => clearTimeout(timer)
+    }
+  }, [showToast])
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setFormStatus('loading')
-    setFormMessage('')
+    setShowToast(false)
 
     const formData = new FormData(e.currentTarget)
     const data = {
@@ -38,18 +48,52 @@ const HomePage = () => {
         throw new Error(result.error || 'Failed to send message')
       }
 
-      setFormStatus('success')
-      setFormMessage('Thank you for your message. We will get back to you soon.')
+      // Clear form
       e.currentTarget.reset()
+      
+      // Show success toast
+      setFormStatus('success')
+      setToastMessage("Message sent successfully! We'll get back to you soon.")
+      setShowToast(true)
+      
+      // Reset form status after showing toast
+      setTimeout(() => {
+        setFormStatus('idle')
+      }, 100)
     } catch (error) {
       setFormStatus('error')
-      setFormMessage('Something went wrong. Please try again or email us directly.')
+      setToastMessage('Something went wrong. Please try again or email us directly.')
+      setShowToast(true)
       console.error('Form submission error:', error)
     }
   }
 
   return (
     <>
+      {/* Toast Notification */}
+      {showToast && (
+        <div className="fixed bottom-6 right-6 z-50 animate-[slideUp_0.3s_ease-out]">
+          <div className={`px-6 py-4 rounded-lg shadow-lg border ${
+            formStatus === 'error' 
+              ? 'bg-red-50 text-red-800 border-red-200' 
+              : 'bg-green-50 text-green-800 border-green-200'
+          }`}>
+            <div className="flex items-center gap-3">
+              {formStatus === 'error' ? (
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+              )}
+              <p className="text-sm font-medium">{toastMessage}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <Section className="bg-white pt-24 pb-16 md:pt-32 md:pb-24">
         <div className="text-center max-w-4xl mx-auto">
@@ -301,15 +345,6 @@ const HomePage = () => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-900 focus:border-transparent bg-white disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
-              {formMessage && (
-                <div className={`p-4 rounded-md ${
-                  formStatus === 'success' 
-                    ? 'bg-green-50 text-green-800 border border-green-200' 
-                    : 'bg-red-50 text-red-800 border border-red-200'
-                }`}>
-                  {formMessage}
-                </div>
-              )}
               <div>
                 <button
                   type="submit"

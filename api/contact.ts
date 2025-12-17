@@ -2,68 +2,61 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-export default async function handler(req: Request) {
-  // Handle CORS if needed
-  const headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  }
+export default async function handler(req: any, res: any) {
+  // Handle CORS
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version')
 
   if (req.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers })
+    res.status(200).end()
+    return
   }
 
   if (req.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-      status: 405,
-      headers,
-    })
+    return res.status(405).json({ error: 'Method not allowed' })
   }
 
   try {
-    const { name, email, message } = await req.json()
+    const { name, email, message } = req.body
 
     if (!name || !email || !message) {
-      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
-        status: 400,
-        headers,
-      })
+      return res.status(400).json({ error: 'Missing required fields' })
+    }
+
+    // Validate Resend API key
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not set')
+      return res.status(500).json({ error: 'Email service not configured' })
     }
 
     // Send email to your address
     const { data, error } = await resend.emails.send({
-      from: 'ProdReady Contact <onboarding@resend.dev>', // Update this with your verified domain
-      to: process.env.CONTACT_EMAIL || 'your-email@example.com', // Your email address
+      from: 'ProdReady Contact <onboarding@resend.dev>',
+      to: process.env.CONTACT_EMAIL || 'colt@prodready.co',
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <p>${String(message).replace(/\n/g, '<br>')}</p>
       `,
-      replyTo: email,
+      replyTo: email as string,
     })
 
     if (error) {
       console.error('Resend error:', error)
-      return new Response(JSON.stringify({ error: 'Failed to send email' }), {
-        status: 500,
-        headers,
-      })
+      return res.status(500).json({ error: 'Failed to send email', details: error })
     }
 
-    return new Response(JSON.stringify({ success: true, data }), {
-      status: 200,
-      headers,
-    })
+    return res.status(200).json({ success: true, data })
   } catch (error) {
     console.error('Error:', error)
-    return new Response(JSON.stringify({ error: 'Internal server error' }), {
-      status: 500,
-      headers,
+    return res.status(500).json({ 
+      error: 'Internal server error',
+      message: error instanceof Error ? error.message : 'Unknown error'
     })
   }
 }
