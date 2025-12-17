@@ -1,10 +1,51 @@
+import { useState } from 'react'
 import Section from '../components/Section'
 import apservaLogo from '../assets/apserva_logo.png'
 import foodLoopLogo from '../assets/foodloop_logo.png'
 
 const HomePage = () => {
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [formMessage, setFormMessage] = useState('')
+
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setFormStatus('loading')
+    setFormMessage('')
+
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message')
+      }
+
+      setFormStatus('success')
+      setFormMessage('Thank you for your message. We will get back to you soon.')
+      e.currentTarget.reset()
+    } catch (error) {
+      setFormStatus('error')
+      setFormMessage('Something went wrong. Please try again or email us directly.')
+      console.error('Form submission error:', error)
+    }
   }
 
   return (
@@ -218,10 +259,7 @@ const HomePage = () => {
           </div>
           <form 
             className="bg-gray-50 p-8 md:p-12 rounded-lg border border-gray-200"
-            onSubmit={(e) => {
-              e.preventDefault()
-              alert('Thank you for your message. We will get back to you soon.')
-            }}
+            onSubmit={handleSubmit}
           >
             <div className="space-y-6">
               <div>
@@ -233,7 +271,8 @@ const HomePage = () => {
                   id="name"
                   name="name"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-900 focus:border-transparent bg-white"
+                  disabled={formStatus === 'loading'}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-900 focus:border-transparent bg-white disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
               <div>
@@ -245,7 +284,8 @@ const HomePage = () => {
                   id="email"
                   name="email"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-900 focus:border-transparent bg-white"
+                  disabled={formStatus === 'loading'}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-900 focus:border-transparent bg-white disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
               <div>
@@ -257,15 +297,26 @@ const HomePage = () => {
                   name="message"
                   rows={5}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-900 focus:border-transparent bg-white"
+                  disabled={formStatus === 'loading'}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-900 focus:border-transparent bg-white disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
+              {formMessage && (
+                <div className={`p-4 rounded-md ${
+                  formStatus === 'success' 
+                    ? 'bg-green-50 text-green-800 border border-green-200' 
+                    : 'bg-red-50 text-red-800 border border-red-200'
+                }`}>
+                  {formMessage}
+                </div>
+              )}
               <div>
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-gray-900 text-white text-base font-medium rounded-md hover:bg-gray-800 transition-colors"
+                  disabled={formStatus === 'loading'}
+                  className="w-full px-6 py-3 bg-gray-900 text-white text-base font-medium rounded-md hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
                 </button>
               </div>
             </div>

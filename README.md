@@ -91,11 +91,14 @@ The project uses Tailwind CSS. Customize colors and theme in `tailwind.config.js
 
 ### Contact Form
 
-The contact form on the landing page is currently a placeholder. To connect it to a backend:
+The contact form uses Resend for email delivery. To set it up:
 
-1. Update the form submission handler in `src/pages/LandingPage.tsx`
-2. Add your API endpoint
-3. Handle form validation and error states
+1. Create a `.env` file in the root directory (see `.env.example` for template)
+2. Add your `RESEND_API_KEY` and `CONTACT_EMAIL` to the `.env` file
+3. For local development, use `vercel dev` to test the API route
+4. For production, add environment variables in your Vercel project settings
+
+See `EMAIL_SETUP.md` for detailed instructions.
 
 ## License
 
