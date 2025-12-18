@@ -26,7 +26,8 @@ const HomePage = () => {
     setFormStatus('loading')
     setShowToast(false)
 
-    const formData = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    const formData = new FormData(form)
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
@@ -42,14 +43,22 @@ const HomePage = () => {
         body: JSON.stringify(data),
       })
 
-      const result = await response.json()
-
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message')
+      let result
+      try {
+        result = await response.json()
+      } catch (parseError) {
+        // If response is not JSON, treat as error
+        throw new Error('Invalid response from server')
       }
 
-      // Clear form
-      e.currentTarget.reset()
+      if (!response.ok) {
+        throw new Error(result?.error || result?.message || 'Failed to send message')
+      }
+
+      // Clear form safely
+      if (form) {
+        form.reset()
+      }
       
       // Show success toast
       setFormStatus('success')
@@ -62,7 +71,8 @@ const HomePage = () => {
       }, 100)
     } catch (error) {
       setFormStatus('error')
-      setToastMessage('Something went wrong. Please try again or email us directly.')
+      const errorMessage = error instanceof Error ? error.message : 'Something went wrong. Please try again or email us directly.'
+      setToastMessage(errorMessage)
       setShowToast(true)
       console.error('Form submission error:', error)
     }
