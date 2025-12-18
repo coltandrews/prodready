@@ -35,10 +35,10 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: 'Missing required fields' })
     }
 
-    // Send email to both addresses
+    // Send email to all addresses
     const adminEmail = await resend.emails.send({
-      from: 'ProdReady <colt@prodready.co>',
-      to: ['colt@prodready.co', 'coltandrews89@gmail.com'],
+      from: 'ProdReady <team@prodready.co>',
+      to: ['colt@prodready.co', 'coltandrews89@gmail.com', 'team@prodready.co'],
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -57,7 +57,7 @@ export default async function handler(req: any, res: any) {
 
     // Send confirmation email to the submitter
     const confirmationEmail = await resend.emails.send({
-      from: 'ProdReady <colt@prodready.co>',
+      from: 'ProdReady <team@prodready.co>',
       to: email as string,
       subject: 'Thank you for reaching out to ProdReady',
       html: `
