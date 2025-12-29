@@ -113,7 +113,7 @@ const HomePage = () => {
 
       {/* Contact */}
       <Section id="contact" className="bg-gray-50">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get in Touch</h2>
             <p className="text-lg text-gray-600">
@@ -122,13 +122,11 @@ const HomePage = () => {
           </div>
           
           {/* Calendly */}
-          <div className="bg-white p-8 rounded-lg border border-gray-200">
-            <div 
-              className="calendly-inline-widget" 
-              data-url="https://calendly.com/colt-prodready/30min"
-              style={{ minWidth: '320px', height: '700px' }}
-            />
-          </div>
+          <div 
+            className="calendly-inline-widget" 
+            data-url="https://calendly.com/colt-prodready/30min"
+            style={{ minWidth: '100%', height: '700px' }}
+          />
         </div>
       </Section>
     </>
