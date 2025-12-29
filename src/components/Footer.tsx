@@ -10,8 +10,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">ProdReady</h3>
             <p className="text-sm text-gray-600">
-              We help with building, deploying, or maintaining applications. 
-              Whether you need help at one stage or across the entire journey, we're here to help.
+              We help startups and small teams ship and stabilize production software fast—without hiring a full internal team.
             </p>
           </div>
           
@@ -43,7 +42,7 @@ const Footer = () => {
               onClick={() => scrollTo('contact')}
               className="inline-block px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-md hover:bg-gray-800 transition-colors"
             >
-              Get Started
+              Get in Touch
             </button>
           </div>
         </div>

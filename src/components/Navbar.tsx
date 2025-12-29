@@ -32,7 +32,7 @@ const Navbar = () => {
             onClick={() => scrollTo('contact')}
             className="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-md hover:bg-gray-800 transition-colors"
           >
-            Learn More
+            Get in Touch
           </button>
         </div>
       </div>
