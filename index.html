@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="shortcut icon" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
@@ -14,6 +16,9 @@
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
     <meta name="revisit-after" content="7 days" />
+    <meta name="theme-color" content="#111827" />
+    <meta name="msapplication-TileColor" content="#111827" />
+    <meta name="application-name" content="ProdReady" />
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://prodready.co/" />
@@ -40,7 +45,44 @@
     <!-- <meta name="geo.position" content="latitude;longitude" /> -->
     <!-- <meta name="ICBM" content="latitude, longitude" /> -->
     
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Organization Schema - For enhanced search results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ProdReady LLC",
+      "url": "https://prodready.co",
+      "logo": "https://prodready.co/logo.png",
+      "image": "https://prodready.co/og-image.jpg",
+      "description": "Expert contract developers and app building services. We help founders and small teams build, deploy, and maintain production-ready applications.",
+      "foundingDate": "2024",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "email": "team@prodready.co",
+        "availableLanguage": ["English"],
+        "areaServed": "US"
+      },
+      "sameAs": [],
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://calendly.com/colt-prodready/30min",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "result": {
+          "@type": "Reservation",
+          "name": "Schedule a Consultation"
+        }
+      }
+    }
+    </script>
+    
+    <!-- ProfessionalService Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -50,8 +92,7 @@
       "url": "https://prodready.co",
       "logo": "https://prodready.co/logo.png",
       "image": "https://prodready.co/og-image.jpg",
-      "telephone": "",
-      "email": "",
+      "email": "team@prodready.co",
       "priceRange": "$$",
       "areaServed": {
         "@type": "Country",
@@ -103,8 +144,53 @@
             }
           }
         ]
-      },
-      "sameAs": []
+      }
+    }
+    </script>
+    
+    <!-- WebSite Schema with SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ProdReady LLC",
+      "url": "https://prodready.co",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://prodready.co/?s={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://prodready.co"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://prodready.co/#services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Contact",
+          "item": "https://prodready.co/#contact"
+        }
+      ]
     }
     </script>
     
