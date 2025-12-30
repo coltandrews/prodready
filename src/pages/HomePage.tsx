@@ -63,28 +63,35 @@ const HomePage = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">What We Do</h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="bg-white p-8 rounded-lg border border-gray-200">
-            <div className="text-2xl font-bold text-gray-900 mb-3">MVP Builds</div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <article className="bg-white p-8 rounded-lg border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">MVP Builds</h3>
             <p className="text-gray-600">
               Idea → live product. We build production-ready MVPs fast, not prototypes. 
               Real software that ships and runs reliably.
             </p>
-          </div>
-          <div className="bg-white p-8 rounded-lg border border-gray-200">
-            <div className="text-2xl font-bold text-gray-900 mb-3">Fix Broken Production Apps</div>
+          </article>
+          <article className="bg-white p-8 rounded-lg border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">Fix Broken Production Apps</h3>
             <p className="text-gray-600">
               Your app is down, slow, or unstable. We diagnose, fix, and stabilize 
               production systems quickly.
             </p>
-          </div>
-          <div className="bg-white p-8 rounded-lg border border-gray-200">
-            <div className="text-2xl font-bold text-gray-900 mb-3">Ongoing Engineering Support</div>
+          </article>
+          <article className="bg-white p-8 rounded-lg border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">Ongoing Engineering Support</h3>
             <p className="text-gray-600">
               Monthly engineering support for startups without a senior dev. 
               We handle production while you focus on product.
             </p>
-          </div>
+          </article>
+          <article className="bg-white p-8 rounded-lg border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">SEO Optimization</h3>
+            <p className="text-gray-600">
+              Improve your site's search visibility with technical SEO, structured data, 
+              and content optimization. Get found by the right customers.
+            </p>
+          </article>
         </div>
       </Section>
 

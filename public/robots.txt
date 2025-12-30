@@ -1,0 +1,12 @@
+# robots.txt for ProdReady LLC
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://prodready.co/sitemap.xml
+
+# Disallow admin or private areas if you have them
+# Disallow: /admin/
+# Disallow: /private/
+
