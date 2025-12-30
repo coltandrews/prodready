@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Git Logo - Official branching symbol -->
+  <!-- Left vertical line -->
+  <line x1="25" y1="20" x2="25" y2="80" stroke="#F05032" stroke-width="6" stroke-linecap="round"/>
+  <!-- Top horizontal to merge point -->
+  <path d="M 25 20 Q 35 20 45 30" fill="none" stroke="#F05032" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bottom horizontal to merge point -->
+  <path d="M 25 80 Q 35 80 45 70" fill="none" stroke="#F05032" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Right branch (merged) -->
+  <path d="M 45 30 Q 50 35 55 50 Q 60 65 65 70 Q 75 80 75 80" fill="none" stroke="#F05032" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Merge point circle -->
+  <circle cx="45" cy="50" r="6" fill="#F05032"/>
+</svg>
