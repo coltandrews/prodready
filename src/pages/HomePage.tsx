@@ -46,8 +46,8 @@ const HomePage = () => {
             Production-ready software.<br />Built right.
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-2xl mx-auto">
-            We help founders and small teams build, deploy, and maintain applications. 
-            One partner for whatever you need.
+            We help founders and small teams build, deploy, and maintain applications with 
+            a focus on stability, security, and maintainability. One partner for whatever you need.
           </p>
           <button
             onClick={scrollToContact}
@@ -68,28 +68,29 @@ const HomePage = () => {
             <h3 className="text-2xl font-bold text-gray-900 mb-3">MVP Builds</h3>
             <p className="text-gray-600">
               Idea → live product. We build production-ready MVPs fast, not prototypes. 
-              Real software that ships and runs reliably.
+              Real software that ships and runs reliably with built-in security, stability, 
+              and maintainability from day one.
             </p>
           </article>
           <article className="bg-white p-8 rounded-lg border border-gray-200">
             <h3 className="text-2xl font-bold text-gray-900 mb-3">Fix Broken Production Apps</h3>
             <p className="text-gray-600">
               Your app is down, slow, or unstable. We diagnose, fix, and stabilize 
-              production systems quickly.
+              production systems quickly while improving security and long-term maintainability.
             </p>
           </article>
           <article className="bg-white p-8 rounded-lg border border-gray-200">
             <h3 className="text-2xl font-bold text-gray-900 mb-3">Ongoing Engineering Support</h3>
             <p className="text-gray-600">
               Monthly engineering support for startups without a senior dev. 
-              We handle production while you focus on product.
+              We maintain stability, security, and code quality while you focus on product.
             </p>
           </article>
           <article className="bg-white p-8 rounded-lg border border-gray-200">
             <h3 className="text-2xl font-bold text-gray-900 mb-3">Business Process Automation</h3>
             <p className="text-gray-600">
               Help local businesses remove manual processes and build simple internal tools 
-              or customer apps that save time and money.
+              or customer apps that save time and money. Built secure, stable, and maintainable.
             </p>
           </article>
           <article className="bg-white p-8 rounded-lg border border-gray-200">
@@ -104,11 +105,11 @@ const HomePage = () => {
 
       {/* Proof */}
       <Section className="bg-gray-50">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Why ProdReady</h2>
           </div>
-          <div className="space-y-6 text-lg text-gray-700">
+          <div className="space-y-6 text-lg text-gray-700 mb-12">
             <p>
               We've built and maintained production systems that handle real users and real traffic. 
               Not demos or proof-of-concepts—actual software that runs in production.
@@ -121,6 +122,31 @@ const HomePage = () => {
               You get production-ready work without the overhead of hiring a full team. 
               One partner who handles the technical work so you can focus on your product.
             </p>
+          </div>
+          
+          {/* Core Values */}
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Stability</h3>
+              <p className="text-gray-600">
+                We build systems that run reliably under load. No crashes, no downtime, 
+                no surprises—just software that works when you need it.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Security</h3>
+              <p className="text-gray-600">
+                Security is built in from the start. We follow best practices to protect 
+                your data and your users, not as an afterthought.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Maintainability</h3>
+              <p className="text-gray-600">
+                Clean, well-documented code that's easy to understand and modify. 
+                Your future self (and team) will thank you.
+              </p>
+            </div>
           </div>
         </div>
       </Section>
