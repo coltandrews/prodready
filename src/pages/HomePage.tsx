@@ -63,7 +63,7 @@ const HomePage = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">What We Do</h2>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <article className="bg-white p-8 rounded-lg border border-gray-200">
             <h3 className="text-2xl font-bold text-gray-900 mb-3">MVP Builds</h3>
             <p className="text-gray-600">
@@ -83,6 +83,13 @@ const HomePage = () => {
             <p className="text-gray-600">
               Monthly engineering support for startups without a senior dev. 
               We handle production while you focus on product.
+            </p>
+          </article>
+          <article className="bg-white p-8 rounded-lg border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">Business Process Automation</h3>
+            <p className="text-gray-600">
+              Help local businesses remove manual processes and build simple internal tools 
+              or customer apps that save time and money.
             </p>
           </article>
           <article className="bg-white p-8 rounded-lg border border-gray-200">
