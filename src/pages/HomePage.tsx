@@ -89,7 +89,7 @@ const HomePage = () => {
           <article className="bg-white p-8 rounded-lg border border-gray-200">
             <h3 className="text-2xl font-bold text-gray-900 mb-3">Business Process Automation</h3>
             <p className="text-gray-600">
-              Help local businesses remove manual processes and build simple internal tools 
+              Help small businesses remove manual processes and build simple internal tools 
               or customer apps that save time and money. Built secure, stable, and maintainable.
             </p>
           </article>
